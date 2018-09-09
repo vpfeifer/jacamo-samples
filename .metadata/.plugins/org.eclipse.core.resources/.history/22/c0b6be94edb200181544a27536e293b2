@@ -1,0 +1,33 @@
+// Agent charge_agent in project room_cleaner
+
+/* Initial beliefs and rules */
+
+/* Initial goals */
+
+!start.
+
+/* Plans */
+
++!start : true <- makeArtifact("rooms", "room_cleaner.Rooms", [30], ID);
+				  focus(ID);
+				  !searchCharger.
+
++!searchCharger <- .drop_all_intentions;
+				   !move;
+				   .wait(1000);
+				   !searchCharger.
+
++!move : at(Room) & Room < 29 <- .println("Moving to room ", Room + 1);
+								 goNextRoom.
+
++!move : at(Room) & Room == 29 <- .println("Moving to first room");
+								 goFirstRoom.
+
++dirty: at(Room) <- .println("Charger found at ", Room);
+					clean.
+
+{ include("$jacamoJar/templates/common-cartago.asl") }
+{ include("$jacamoJar/templates/common-moise.asl") }
+
+// uncomment the include below to have an agent compliant with its organisation
+//{ include("$moiseJar/asl/org-obedient.asl") }

@@ -1,0 +1,20 @@
+/*
+    aulaUnesp_ex1
+    ---------------------------
+
+    JaCaMo Project File
+
+    This file defines the initial state of the MAS (initial agents, environment, organisation, ....)
+
+    (see jacamo/doc/jcm.html for more information about what can be defined in this file)
+
+    JaCaMo <VERSION>
+    <DATE>
+*/
+
+mas aulaUnesp_ex1 {
+	agent hubble : astronomer.asl
+	agent jamesBond : agent007.asl
+    agent sample_agent
+    agent vinicius
+}
