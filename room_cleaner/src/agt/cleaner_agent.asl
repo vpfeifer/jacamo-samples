@@ -4,21 +4,22 @@
 
 /* Initial goals */
 
-!start.
+!initialize.
 
 /* Plans */
 
-+!start : true <- .wait(500);
-				  lookupArtifact("rooms", Rooms);
-				  focus(Rooms);
-				  initPosition(Pos);
-				  !searchTrash.
++!initialize <- .println("Cleaner initialized.").
+-!initialize <- .println("Can't initialize cleaner.").
+
++startCleaner[source(Src)] <- .println(Src, " started this cleaner");
+				  			   lookupArtifact("rooms", Rooms);
+				  			   focus(Rooms);
+				  			   !searchTrash.
 
 +!searchTrash <- .drop_all_intentions;
-				 .println("Current position ", Pos);
-				 updatePosition(Pos).
-				 //.wait(1000);
-				 //!searchTrash.
+				 !move;
+				 .wait(1000);
+				 !searchTrash.
 
 +!move : at(Room) & Room < 29 <- .println("Moving to room ", Room + 1);
 								 goNextRoom.
@@ -26,8 +27,10 @@
 +!move : at(Room) & Room == 29 <- .println("Moving to first room");
 								 goFirstRoom.
 
-+dirty: at(Room) <- .println("Cleaning room ", Room);
++dirty : at(Room) <- .println("Cleaning room ", Room);
 					clean.
+
++noDirty : .println("Room is already clean."). 
 
 { include("$jacamoJar/templates/common-cartago.asl") }
 { include("$jacamoJar/templates/common-moise.asl") }

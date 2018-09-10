@@ -13,7 +13,7 @@
 */
 
 mas room_cleaner {
-	agent room_perceptor : perception_agent.asl
+	agent rooms_builder : rooms_builder_agent.asl
 	agent room_charge : charge_agent.asl
 	agent room_cleaner : cleaner_agent.asl
 	agent room_cleaner_2 : cleaner_agent.asl

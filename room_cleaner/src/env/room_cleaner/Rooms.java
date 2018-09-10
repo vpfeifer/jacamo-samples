@@ -70,16 +70,4 @@ public class Rooms extends Artifact {
 		else
 			signal("noDirty");
 	}
-	
-	@OPERATION
-	void initPosition(OpFeedbackParam<Integer> pos) {
-		pos.set(0);
-	}
-	
-	@OPERATION
-	void updatePosition(OpFeedbackParam<Integer> pos) {
-		int currentValue = pos.get();
-		currentValue++;
-		pos.set(currentValue);
-	}
 }
