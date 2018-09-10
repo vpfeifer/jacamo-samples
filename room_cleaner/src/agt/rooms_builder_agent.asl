@@ -9,7 +9,7 @@
 /* Plans */
 
 +!start : true <- .println("Creating rooms."); 
-				  makeArtifact("rooms", "room_cleaner.Rooms", [30], Rooms);
+				  makeArtifact("rooms", "room_cleaner.Rooms", [6, 5], Rooms);
 				  focus(Rooms);
 				  .println("Rooms created.");
 				  .broadcast(tell, startCleaner).
